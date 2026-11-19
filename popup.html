@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>超星学习通 AI 助手 V7</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 350px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 16px;
+      font-size: 13px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    .badge {
+      background: #2563eb;
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 600;
+    }
+    .field {
+      margin-bottom: 12px;
+    }
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .field input[type="text"],
+    .field input[type="password"] {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #f8fafc;
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .field input:focus {
+      border-color: #3b82f6;
+    }
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      background: #1e293b;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      border: 1px solid #334155;
+    }
+    .switch-row span {
+      font-size: 12px;
+      color: #e2e8f0;
+    }
+    .btn-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    button {
+      flex: 1;
+      padding: 9px 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    button:hover {
+      opacity: 0.92;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+    }
+    .btn-secondary {
+      background: #334155;
+      color: #e2e8f0;
+      flex: 0.7;
+    }
+    #statusMsg {
+      margin-top: 10px;
+      font-size: 12px;
+      min-height: 18px;
+      line-height: 1.4;
+      color: #34d399;
+      word-break: break-all;
+    }
+    .tips {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid #1e293b;
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">🚀 超星学习通 AI 助手</div>
+    <span class="badge">V7 防抢跑版</span>
+  </div>
+
+  <div class="field">
+    <label for="apiKey">API_KEY（DeepSeek / OpenAI 兼容密钥）</label>
+    <input type="password" id="apiKey" placeholder="sk-在这里填入你的API_KEY" />
+  </div>
+
+  <div class="field">
+    <label for="apiUrl">API_URL（接口地址）</label>
+    <input type="text" id="apiUrl" value="https://api.deepseek.com/chat/completions" />
+  </div>
+
+  <div class="field">
+    <label for="model">MODEL（模型名称）</label>
+    <input type="text" id="model" value="deepseek-flash" />
+  </div>
+
+  <div class="switch-row">
+    <span>开启全自动巡检挂机</span>
+    <input type="checkbox" id="enabled" checked />
+  </div>
+
+  <div class="switch-row">
+    <span>全部题目勾选后自动点击“提交”交卷</span>
+    <input type="checkbox" id="autoSubmit" checked />
+  </div>
+
+  <div class="btn-group">
+    <button id="saveBtn" class="btn-primary">💾 保存并立即运行</button>
+    <button id="testBtn" class="btn-secondary">🧪 测试 Key</button>
+  </div>
+
+  <div id="statusMsg"></div>
+
+  <div class="tips">
+    • 自动播视频、过随堂弹窗测验、抗加密乱码 AI 答题<br/>
+    • 强制校验每道题真实勾选状态，完成后再交卷跳下一节
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
